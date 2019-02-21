@@ -12,7 +12,7 @@ public class Console {
 
 
     private TeacherService teacherService = TeacherService.getTeacherService();
-    private ExamService examService = ExamService.getExamsService();
+    private ExamService examService = ExamService.getExamService();
     private CourseService courseService = CourseService.getCourseService();
     private AssignmentService assignmentService = AssignmentService.getAssignmentService();
     private StudentService studentService = StudentService.getStudentService();
@@ -155,7 +155,7 @@ public class Console {
                 System.out.println("enter name");
 
                 Course course = new Course(scanner.next());
-                CourseService.addCourse(course);
+                CourseService.addCourse(course); //hvad sker her
                 break;
 
             case 2:
