@@ -1,15 +1,20 @@
 package dk.kea.studentAdmin;
 
+import dk.kea.studentAdmin.model.Course;
+import dk.kea.studentAdmin.model.Exam;
 import dk.kea.studentAdmin.model.Student;
-import dk.kea.studentAdmin.service.StudentService;
+import dk.kea.studentAdmin.model.Teacher;
+import dk.kea.studentAdmin.service.*;
 
 import java.util.Scanner;
 
 public class Console {
 
-    /*
-    The student service
-     */
+
+    private TeacherService teacherService = TeacherService.getTeacherService();
+    private ExamService examService = ExamService.getExamsService();
+    private CourseService courseService = CourseService.getCourseService();
+    private AssignmentService assignmentService = AssignmentService.getAssignmentService();
     private StudentService studentService = StudentService.getStudentService();
 
     /*
@@ -38,7 +43,9 @@ public class Console {
 
         // run until exit code is entered
         while (true) {
-            System.out.println("1: student menu \r\n0:exit1");
+            System.out.println("1: student menu \r\n 2: teacher menu\n" +
+                    " 3: exam menu \n" +
+                    " 4: course menu\r\n 0:exit1");
             Integer choice = scanner.nextInt();
 
             switch (choice) {
@@ -47,9 +54,16 @@ public class Console {
                     //Studentt menu
                     studentMenu(scanner);
                     break;
-                //TODO implement all menu
-
-
+                    //TODO implement all menu
+                case 2:
+                    teacherMenu(scanner);
+                    break;
+                case 3:
+                    examMenu(scanner);
+                    break;
+                case 4:
+                    courseMenu(scanner);
+                    break;
                 case 0:
                     run = false;
                     break;
@@ -81,6 +95,69 @@ public class Console {
                 //List student
                 System.out.println("list of students");
                 //TODO show the list of student - get it from studentService - loop
+
+                break;
+        }
+    }
+    private void teacherMenu(Scanner scanner) {
+        System.out.println("Teacher Menu");
+        System.out.println("1. Create \r\n 2.List \r\n 0. return");
+        Integer choice = scanner.nextInt();
+
+        switch (choice) {
+
+            case 1:
+                System.out.println("enter first name, last name");
+
+                Teacher teacher = new Teacher(scanner.next(), scanner.next());
+                teacherService.addTeacher(teacher);
+                break;
+
+            case 2:
+                //List student
+                System.out.println("list of teachers");
+
+                break;
+        }
+    }
+    private void examMenu(Scanner scanner) {
+        System.out.println("Exam Menu");
+        System.out.println("1. Create \r\n 2.List \r\n 0. return");
+        Integer choice = scanner.nextInt();
+
+        switch (choice) {
+
+            case 1:
+                System.out.println("enter date, time, course");
+
+                Exam exam = new Exam(scanner.next(), scanner.nextInt(), scanner.next());
+                examService.addExams(exam);
+                break;
+
+            case 2:
+                //List student
+                System.out.println("list exams");
+
+                break;
+        }
+    }
+    private void courseMenu(Scanner scanner) {
+        System.out.println("Course Menu");
+        System.out.println("1. Create \r\n 2.List \r\n 0. return");
+        Integer choice = scanner.nextInt();
+
+        switch (choice) {
+
+            case 1:
+                System.out.println("enter name");
+
+                Course course = new Course(scanner.next());
+                CourseService.addCourse(course);
+                break;
+
+            case 2:
+                //List student
+                System.out.println("list courses");
 
                 break;
         }

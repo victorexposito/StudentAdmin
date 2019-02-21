@@ -8,8 +8,8 @@ public class Course {
     private List<Student> studentList;
     private List<Assignment> assignmentList;
 
-
-    public Course() {
+    public Course(String courseName) {
+        this.courseName = courseName;
     }
 
     public String getCourseName() {
