@@ -65,7 +65,7 @@ public class Console {
         System.out.println("1. Create \r\n 2.List \r\n 0. return");
         Integer choice = scanner.nextInt();
 
-        // TODO: make it possible to create several students in a row without coming out of the menu
+        // TODO: make it possible to create several students in a row without coming out of the menu #lav
 
         switch (choice) {
 
@@ -81,6 +81,9 @@ public class Console {
                 //List student
                 System.out.println("list of students");
                 //TODO show the list of student - get it from studentService - loop
+                for(int i = 0; i< studentService.getStudentList().size(); i++){
+                    System.out.println(studentService.getStudentList().get(i));
+                }
 
                 break;
         }
