@@ -8,4 +8,13 @@ public class Student extends Person{
         super(firstName, lastName);
         this.holdNr = holdNr;
     }
+    //TODO RET HOLDNR SÅ DET STEMMER OVERENS MED COURSE
+    @Override
+    public String toString() {
+        return "Student " +
+                "Fornavn: " + getFirstName() + " " +
+                "Efternavnet:  " + getLastName() + " " +
+                "holdNr: " + holdNr + '\'' +
+                '.';
+    }
 }

@@ -27,7 +27,7 @@ public class ExamService {
     /*
     Return the one and only instance
      */
-    public static ExamService getExamsService() {
+    public static ExamService getExamService() {
         return mySelf;
     }
 
@@ -45,7 +45,7 @@ public class ExamService {
      * @param// t
      * @return
      */
-    public boolean removeStudent(Exam e) {
+    public boolean removeExam(Exam e) {
 
         return exams.remove(e);
     }
