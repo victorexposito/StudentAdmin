@@ -6,7 +6,7 @@ public class Course {
     private String courseName;
     private List<Teacher> teacherlist;
     private List<Student> studentList;
-    private List<Assignment> studentList;
+    private List<Assignment> assignmentList;
 
 
     public Course() {
@@ -35,7 +35,7 @@ public class Course {
         teacherlist.add(teacher);
     }
     public void addAssignment(Assignment assignment){
-        assignmentlist.add(assignment);
+        assignmentList.add(assignment);
     }
 
     public void removeStudent(Student student){
@@ -45,7 +45,7 @@ public class Course {
         teacherlist.remove(teacher);
     }
     public void removeAssignment(Assignment assignment){
-        assignmentlist.remove(assignment);
+        assignmentList.remove(assignment);
     }
 
 
