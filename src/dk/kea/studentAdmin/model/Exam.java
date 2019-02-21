@@ -3,13 +3,13 @@ package dk.kea.studentAdmin.model;
 import java.text.SimpleDateFormat;
 import java.time.format.DateTimeFormatter;
 
-public class Exams {
+public class Exam {
 
     private SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
     private int time;
     private String course;
 
-    public Exams(SimpleDateFormat dateFormat, int time, String course) {
+    public Exam(SimpleDateFormat dateFormat, int time, String course) {
         this.dateFormat = dateFormat;
         this.time = time;
         this.course = course;
