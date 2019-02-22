@@ -14,7 +14,7 @@ public class Student extends Person{
         return "Student " +
                 "Fornavn: " + getFirstName() + " " +
                 "Efternavnet:  " + getLastName() + " " +
-                "holdNr: " + holdNr + '\'' +
-                '.';
+                "holdNr: " + holdNr + '\'' + "\n" +
+                "----------------------------------------------------";
     }
 }

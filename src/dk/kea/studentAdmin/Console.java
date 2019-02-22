@@ -6,6 +6,7 @@ import dk.kea.studentAdmin.model.Student;
 import dk.kea.studentAdmin.model.Teacher;
 import dk.kea.studentAdmin.service.*;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Console {
@@ -46,12 +47,14 @@ public class Console {
             System.out.println("1: student menu \r\n 2: teacher menu\n" +
                     " 3: exam menu \n" +
                     " 4: course menu\r\n 0:exit1");
-            Integer choice = scanner.nextInt();
+
+                Integer choice = scanner.nextInt();
+
 
             switch (choice) {
 
                 case 1:
-                    //Studentt menu
+                    //Student menu
                     studentMenu(scanner);
                     break;
                     //TODO implement all menu
@@ -81,7 +84,7 @@ public class Console {
 
         // TODO: make it possible to create several students in a row without coming out of the menu #lav
 
-        switch (choice) {
+        switch (choice ) {
 
             case 1:
                 //create Student
@@ -89,6 +92,7 @@ public class Console {
 
                 Student s = new Student(scanner.next(), scanner.next(), scanner.next());
                 studentService.addStudent(s);
+                studentMenu(scanner);
                 break;
 
             case 2:
@@ -98,6 +102,7 @@ public class Console {
                 for(int i = 0; i< studentService.getStudentList().size(); i++){
                     System.out.println(studentService.getStudentList().get(i));
                 }
+                studentMenu(scanner);
 
                 break;
         }
@@ -155,7 +160,7 @@ public class Console {
                 System.out.println("enter name");
 
                 Course course = new Course(scanner.next());
-                CourseService.addCourse(course); //hvad sker her
+                //1CourseService.addCourse(course); //hvad sker her
                 break;
 
             case 2:
