@@ -6,13 +6,23 @@ import java.time.format.DateTimeFormatter;
 public class Exam {
 
     private String dateFormat;
-    private int time;
+    private String time;
     private String course;
 
-    public Exam(String dateFormat, int time, String course) {
+    public Exam(String dateFormat, String time, String course) {
         this.dateFormat = dateFormat;
         this.time = time;
         this.course = course;
+    }
+
+    @Override
+    public String toString() {
+        return "Exam  " +
+                "Dato: '" + dateFormat + " " +
+                "Tid: '" + time + " " +
+                "Fag: '" + course + " " + "\n" +
+                "___________________________________________________" +
+                ' ';
     }
 
     public String getDateFormat() {
@@ -23,11 +33,11 @@ public class Exam {
         this.dateFormat = dateFormat;
     }
 
-    public int getTime() {
+    public String getTime() {
         return time;
     }
 
-    public void setTime(int time) {
+    public void setTime(String time) {
         this.time = time;
     }
 
