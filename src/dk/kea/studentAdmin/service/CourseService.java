@@ -1,7 +1,9 @@
 package dk.kea.studentAdmin.service;
 
+import dk.kea.studentAdmin.model.Assignment;
 import dk.kea.studentAdmin.model.Course;
 import dk.kea.studentAdmin.model.Student;
+import dk.kea.studentAdmin.model.Teacher;
 
 
 import java.util.ArrayList;
@@ -10,10 +12,7 @@ import java.util.List;
 public class CourseService {
     private static CourseService mySelf = new CourseService();
 
-    private List<Student> dansk = new ArrayList<>();
-    private List<Student> engelsk = new ArrayList<>();
-
-    private List<Student> course = new ArrayList<>();
+    private List<Course> courses = new ArrayList<>();
 
 
 
@@ -24,25 +23,74 @@ public class CourseService {
         return mySelf;
     }
 
+    public boolean addCourse (Course course){
+        return courses.add(course);
+    }
 
-    public boolean addCourseDansk(Student student) {
-        return dansk.add(student);
+    public boolean removeStudentFromCourse(String courseName, Student student){
+        for (int i = 0; i < courses.size(); i++) {
+            Course temp = courses.get(i);
+            if(courseName.equals(temp.getCourseName())){
+                temp.removeStudent(student);
+            }
+        }
+        return true;
+    }
+
+    public boolean removeTeacherFromCourse(String courseName, Teacher teacher){
+        for (int i = 0; i < courses.size(); i++) {
+            Course temp = courses.get(i);
+            if(courseName.equals(temp.getCourseName())){
+                temp.removeTeacher(teacher);
+            }
+        }
+        return true;
+    }
+
+    public boolean removeAssignmentFromCourse(String courseName, Assignment assignment){
+        for (int i = 0; i < courses.size(); i++) {
+            Course temp = courses.get(i);
+            if(courseName.equals(temp.getCourseName())){
+                temp.removeAssignment(assignment);
+            }
+        }
+        return true;
     }
 
 
-
-
-    public boolean removeStudentDansk(Student student) {
-
-        return dansk.remove(student);
+    public boolean addStudentToCourse(String courseName, Student student){
+        for (int i = 0; i < courses.size() ; i++) {
+            Course temp = courses.get(i);
+            if (courseName.equals(temp.getCourseName())){
+                temp.addStudent(student);
+            }
+        }
+        return true;
     }
 
-
-    public List<Student> getDanskList() {
-        return new ArrayList<>(dansk);
+    public boolean addTeacherToCourse(String courseName, Teacher teacher){
+        for (int i = 0; i < courses.size() ; i++) {
+            Course temp = courses.get(i);
+            if (courseName.equals(temp.getCourseName())){
+                temp.addTeacher(teacher);
+            }
+        }
+        return true;
     }
 
+    public boolean addAssignmentToCourse(String courseName, Assignment assignment){
+        for (int i = 0; i < courses.size() ; i++) {
+            Course temp = courses.get(i);
+            if (courseName.equals(temp.getCourseName())){
+                temp.addAssignment(assignment);
+            }
+        }
+        return true;
+    }
 
+    public List<Course> getCourseList() {
+        return new ArrayList<>(courses);
+    }
     public Course getBySomeIndentifier(Object identifier) {
         //TODO implement
         return null;

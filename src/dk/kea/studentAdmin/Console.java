@@ -119,11 +119,12 @@ public class Console {
 
                 Teacher teacher = new Teacher(scanner.next(), scanner.next());
                 teacherService.addTeacher(teacher);
+                teacherMenu(scanner);
                 break;
 
             case 2:
                 //List student
-                System.out.println("list of teachers");
+                System.out.println ( teacherService.getTeacherList() );
 
                 break;
         }
@@ -138,39 +139,44 @@ public class Console {
             case 1:
                 System.out.println("enter date, time, course");
 
-                Exam exam = new Exam(scanner.next(), scanner.nextInt(), scanner.next());
+                System.out.println("Date");
+                String date = scanner.next();
+
+                System.out.println("Time");
+                String time = scanner.next();
+
+                System.out.println("Course");
+                String course = scanner.next();
+
+                Exam exam = new Exam(date,time,course);
                 examService.addExams(exam);
+                examMenu(scanner);
                 break;
 
             case 2:
                 //List student
-                System.out.println("list exams");
+                System.out.println(examService.getExamList());
 
                 break;
         }
     }
     private void courseMenu(Scanner scanner) {
         System.out.println("Course Menu");
-        System.out.println("1. Tilmeld \r\n 2.List \r\n 0. return");
+        System.out.println("1. Create \r\n 2.List \r\n 0. return");
         Integer choice = scanner.nextInt();
 
         switch (choice) {
 
             case 1:
-                System.out.println("enter name");
+                System.out.println("Lav ny course");
+                CourseService.getCourseService();
+                courseService.addCourse();
 
-                String firstName = scanner.next();
-                String lastName = scanner.next();
-                String holdNr = scanner.next();
-
-                Student student = new Student(firstName, lastName, holdNr);
-
-                courseService.addCourseDansk(student); //hvad sker her
                 break;
 
             case 2:
                 //List student
-                System.out.println("list courses");
+                System.out.println();
 
                 break;
         }
