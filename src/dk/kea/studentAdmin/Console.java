@@ -168,10 +168,10 @@ public class Console {
         switch (choice) {
 
             case 1:
-                System.out.println("enter name");
+                System.out.println("Lav ny course");
+                CourseService.getCourseService();
+                courseService.addCourse();
 
-                //Course course = new Course(scanner.next());
-                //1CourseService.addCourse(course); //hvad sker her
                 break;
 
             case 2:

@@ -23,6 +23,9 @@ public class CourseService {
         return mySelf;
     }
 
+    public boolean addCourse (Course course){
+        return courses.add(course);
+    }
 
     public boolean removeStudentFromCourse(String courseName, Student student){
         for (int i = 0; i < courses.size(); i++) {
