@@ -1,51 +1,66 @@
 package dk.kea.studentAdmin.model;
 
+import jdk.nashorn.internal.objects.annotations.Constructor;
+
+import java.util.ArrayList;
 import java.util.List;
 
 public class Course {
+
     private String courseName;
-    private List<Teacher> teacherlist;
-    private List<Student> studentList;
-    private List<Assignment> assignmentList;
+    private List<Student> studentList = new ArrayList<>();
+    private List<Teacher> teacherList = new ArrayList<>();
+    private List<Assignment> assignmentList = new ArrayList<>();
+
+
+    public Course() {
+    }
 
     public Course(String courseName) {
         this.courseName = courseName;
     }
 
-    public String getCourseName() {
-        return courseName;
+
+    public void removeStudent(Student s){
+        studentList.remove(s);
     }
 
-    public List<Teacher> getTeacherlist() {
-        return teacherlist;
+    public void removeTeacher(Teacher t){
+        teacherList.remove(t);
+    }
+
+    public void removeAssignment(Assignment a){
+        assignmentList.remove(a);
+    }
+
+
+    public void addStudent(Student s) {
+        studentList.add(s);
+    }
+
+    public void addTeacher( Teacher t) {
+        teacherList.add(t);
+    }
+
+    public void addAssignment( Assignment a) {
+        assignmentList.add(a);
+    }
+
+
+    public String getCourseName() {
+        return courseName;
     }
 
     public List<Student> getStudentList() {
         return studentList;
     }
 
-    public void setCourseName(String courseName) {
-        this.courseName = courseName;
+    public List<Teacher> getTeacherList() {
+        return teacherList;
     }
 
-    public void addStudent(Student student){
-        studentList.add(student);
-    }
-    public void addStudent(Teacher teacher){
-        teacherlist.add(teacher);
-    }
-    public void addAssignment(Assignment assignment){
-        assignmentList.add(assignment);
-    }
-
-    public void removeStudent(Student student){
-        studentList.remove(student);
-    }
-    public void removeStudent(Teacher teacher){
-        teacherlist.remove(teacher);
-    }
-    public void removeAssignment(Assignment assignment){
-        assignmentList.remove(assignment);
+    public List<Assignment> getAssignmentList() {
+        return assignmentList;
     }
 
 
