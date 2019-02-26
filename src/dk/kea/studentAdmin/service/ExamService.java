@@ -4,6 +4,8 @@ import dk.kea.studentAdmin.model.Exam;
 import dk.kea.studentAdmin.model.Student;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 
 public class ExamService {
@@ -12,43 +14,57 @@ public class ExamService {
      */
     private static ExamService mySelf = new ExamService();
 
-    /*
-    The list of student
-     */
+
     private List<Exam> exams = new ArrayList<>();
 
-    /*
-    private constructor to avoid creation from outside the class
-     */
+
 
     private ExamService() {
     }
 
-    /*
-    Return the one and only instance
-     */
+
+
     public static ExamService getExamService() {
         return mySelf;
     }
 
-    /**
-     * add a student
-     * @param// student
-     * @return
-     */
+
     public boolean addExams(Exam exam) {
         return exams.add(exam);
     }
 
-    /**
-     * remove s from student list - list methods for finding an object relies on equals method !!!
-     * @param// t
-     * @return
-     */
     public boolean removeExam(Exam e) {
 
         return exams.remove(e);
     }
+
+    public boolean addStudentToExam(String examName, Student student){
+        for (int i = 0; i < exams.size() ; i++) {
+            Exam temp = exams.get(i);
+            if (examName.equals(temp.getExamName())){
+                temp.addStudent(student);
+            }
+
+        }
+        return true;
+    }
+    public boolean removeStudentToExam(String examName, Student student){
+        for (int i = 0; i < exams.size() ; i++) {
+            Exam temp = exams.get(i);
+            if (examName.equals(temp.getExamName())){
+                temp.removeStudent(student);
+            }
+
+        }
+        return true;
+    }
+
+    public void examOrder(Exam exam){
+        Collections.reverse(exams);
+        System.out.println(exams);
+    }
+
+
 
     /**
      *
