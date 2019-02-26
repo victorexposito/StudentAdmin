@@ -9,6 +9,7 @@ public class Exam {
     private String time;
     private String course;
 
+
     public Exam(String dateFormat, String time, String course) {
         this.dateFormat = dateFormat;
         this.time = time;
