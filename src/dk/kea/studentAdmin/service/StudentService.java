@@ -3,6 +3,7 @@ package dk.kea.studentAdmin.service;
 import dk.kea.studentAdmin.model.Student;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /*
@@ -62,6 +63,12 @@ public class StudentService {
         return new ArrayList<>(students);
     }
 
+    public void printList(){
+        for(int i = 0; i< getStudentList().size(); i++){
+            System.out.println(getStudentList().get(i));
+        }
+    }
+
     /**
      *
      * Return a specific student based on the indentifier( to be determined)
@@ -71,5 +78,14 @@ public class StudentService {
     public Student getBySomeIndentifier(Object identifier) {
         //TODO implement
         return null;
+    }
+
+    public void printStudents()  //prints tpList
+    {
+        for(Student s : students)
+        {
+            System.out.printf("%-5s%-5s%n", s.getFirstName(),s.getLastName());
+
+        }
     }
 }
