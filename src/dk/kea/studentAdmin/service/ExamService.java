@@ -3,10 +3,7 @@ package dk.kea.studentAdmin.service;
 import dk.kea.studentAdmin.model.Exam;
 import dk.kea.studentAdmin.model.Student;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 public class ExamService {
     /*
@@ -16,7 +13,7 @@ public class ExamService {
 
 
     private List<Exam> exams = new ArrayList<>();
-
+    private Student student;
 
 
     private ExamService() {
@@ -38,7 +35,7 @@ public class ExamService {
         return exams.remove(e);
     }
 
-    public boolean addStudentToExam(String examName, Student student){
+    public void addStudentToExam(String examName, Student student){
         for (int i = 0; i < exams.size() ; i++) {
             Exam temp = exams.get(i);
             if (examName.equals(temp.getExamName())){
@@ -46,7 +43,7 @@ public class ExamService {
             }
 
         }
-        return true;
+
     }
     public boolean removeStudentToExam(String examName, Student student){
         for (int i = 0; i < exams.size() ; i++) {
@@ -65,7 +62,6 @@ public class ExamService {
     }
 
 
-
     /**
      *
      * @return the student list. Only for viewing
@@ -74,6 +70,16 @@ public class ExamService {
         return new ArrayList<>(exams);
     }
 
+    public void printAllMember(Exam examName) {
+        for (int i = 0; i < exams.size(); i++) {
+            Exam temp = exams.get(i);
+            if (examName.equals(temp.getExamName())) {
+                System.out.println(temp.toString());
+            }
+
+
+        }
+    }
     /**
      *
      * Return a specific student based on the indentifier( to be determined)
@@ -84,5 +90,6 @@ public class ExamService {
         //TODO implement
         return null;
     }
+
 
 }

@@ -6,6 +6,7 @@ import dk.kea.studentAdmin.model.Student;
 import dk.kea.studentAdmin.model.Teacher;
 import dk.kea.studentAdmin.service.*;
 
+import java.util.Arrays;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -88,9 +89,9 @@ public class Console {
 
             case 1:
                 //create Student
-                System.out.println("enter first name, last name, hold number");
+                System.out.println("enter first name, last name");
 
-                Student s = new Student(scanner.next(), scanner.next(), scanner.next());
+                Student s = new Student(scanner.next(), scanner.next());
                 studentService.addStudent(s);
                 studentMenu(scanner);
                 break;
@@ -98,10 +99,8 @@ public class Console {
             case 2:
                 //List student
                 System.out.println("list of students");
-                //TODO show the list of student - get it from studentService - loop
-                for(int i = 0; i< studentService.getStudentList().size(); i++){
-                    System.out.println(studentService.getStudentList().get(i));
-                }
+                //studentService.printList();
+                studentService.printStudents();
                 studentMenu(scanner);
 
                 break;
@@ -131,7 +130,9 @@ public class Console {
     }
     private void examMenu(Scanner scanner) {
         System.out.println("Exam Menu");
-        System.out.println("1. Create \r\n 2.List \r\n 0. return");
+        System.out.println("1. Create \r\n 2.List\n" +
+                " 3.Add Student \n" +
+                " 4.Remove Student \r\n 0. return");
         Integer choice = scanner.nextInt();
 
         switch (choice) {
@@ -139,23 +140,44 @@ public class Console {
             case 1:
                 System.out.println("enter date, time, course");
 
+                System.out.println("Name");
+                String name = scanner.next();
+
                 System.out.println("Date");
                 String date = scanner.next();
 
                 System.out.println("Time");
                 String time = scanner.next();
 
-                System.out.println("Course");
-                String course = scanner.next();
+                System.out.println("Location");
+                String location = scanner.next();
 
-                Exam exam = new Exam(date,time,course);
+                Exam exam = new Exam(name,date,time,location);
                 examService.addExams(exam);
                 examMenu(scanner);
                 break;
 
             case 2:
                 //List student
-                System.out.println(examService.getExamList());
+
+                System.out.println(Arrays.toString(examService.getExamList().toArray()));
+
+                break;
+            case 3:
+                System.out.println("Exam name, firstname, lastname");
+
+                String exam1 = scanner.next();
+                Student student = new Student(scanner.next(),scanner.next());
+                examService.addStudentToExam(exam1, student);
+
+                examMenu(scanner);
+
+                break;
+            case 4:
+                System.out.println("Exam name");
+
+                Exam exam2= new Exam(scanner.next());
+                examService.printAllMember(exam2);
 
                 break;
         }
@@ -170,7 +192,8 @@ public class Console {
             case 1:
                 System.out.println("Lav ny course");
                 CourseService.getCourseService();
-                courseService.addCourse();
+                //
+                //courseService.addCourse();
 
                 break;
 

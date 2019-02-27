@@ -8,17 +8,19 @@ public class Exam {
 
     private String examName;
     private String dateFormat;
-    private int time;
-    private String course;
+    private String time;
     private String location;
     private List<Student> studentList = new ArrayList<>();
 
-    public Exam(String examName, String dateFormat, int time, String course, String location) {
+    public Exam(String examName, String dateFormat, String time, String location) {
         this.examName = examName;
         this.dateFormat = dateFormat;
         this.time = time;
-        this.course = course;
         this.location = location;
+    }
+
+    public Exam(String examName) {
+        this.examName = examName;
     }
 
     public Exam() {
@@ -37,13 +39,11 @@ public class Exam {
         return dateFormat;
     }
 
-    public int getTime() {
+    public String getTime() {
         return time;
     }
 
-    public String getCourse() {
-        return course;
-    }
+
 
     public String getLocation() {
         return location;
@@ -56,4 +56,17 @@ public class Exam {
     public String getExamName() {
         return examName;
     }
+
+
+    @Override
+    public String toString() {
+        return "Exam{" +
+                "examName='" + examName + '\'' +
+                ", dateFormat='" + dateFormat + '\'' +
+                ", time='" + time + '\'' +
+                ", location='" + location + '\'' +
+                ", studentList=" + studentList +
+                '}';
+    }
+
 }
