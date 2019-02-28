@@ -80,7 +80,8 @@ public class Console {
 
     private void studentMenu(Scanner scanner) {
         System.out.println("Student Menu");
-        System.out.println("1. Create \r\n 2.List \r\n 0. return");
+        System.out.println("1. Create \r\n 2.List\n" +
+                " 2.Remove\r\n 0. return");
         Integer choice = scanner.nextInt();
 
         // TODO: make it possible to create several students in a row without coming out of the menu #lav
@@ -104,35 +105,57 @@ public class Console {
                 studentMenu(scanner);
 
                 break;
+            case 3:
+                //remove student
+                System.out.println("Remove student");
+                String name = scanner.next();
+                studentService.removeStudent(name);
+                studentMenu(scanner);
+
+                break;
         }
     }
     private void teacherMenu(Scanner scanner) {
         System.out.println("Teacher Menu");
-        System.out.println("1. Create \r\n 2.List \r\n 0. return");
+        System.out.println("1. Create \r\n 2.List \n" +
+                " 3.Remove\r\n 0. return");
         Integer choice = scanner.nextInt();
 
         switch (choice) {
 
             case 1:
+                //Create Teacher
                 System.out.println("enter first name, last name");
 
-                Teacher teacher = new Teacher(scanner.next(), scanner.next());
-                teacherService.addTeacher(teacher);
-                teacherMenu(scanner);
+                Teacher t = new Teacher(scanner.next(), scanner.next());
+                teacherService.addTeacher(t);
+                studentMenu(scanner);
                 break;
 
             case 2:
                 //List student
-                System.out.println ( teacherService.getTeacherList() );
+                System.out.println("list of teachers");
+                teacherService.printTeachers();
+                teacherMenu(scanner);
+
+                break;
+            case 3:
+                //remove student
+                System.out.println("Remove student");
+                String name = scanner.next();
+                studentService.removeStudent(name);
+                studentMenu(scanner);
 
                 break;
         }
     }
     private void examMenu(Scanner scanner) {
         System.out.println("Exam Menu");
-        System.out.println("1. Create \r\n 2.List\n" +
+        System.out.println("1. Create Exam\r\n 2.Lists of exams\n" +
                 " 3.Add Student \n" +
-                " 4.Remove Student \r\n 0. return");
+                " 4.Remove Student\n" +
+                " 5. Remove exam\n" +
+                " 6.Exam order \r\n 0. return");
         Integer choice = scanner.nextInt();
 
         switch (choice) {
@@ -158,7 +181,6 @@ public class Console {
                 break;
 
             case 2:
-                //List student
 
                 System.out.println(Arrays.toString(examService.getExamList().toArray()));
 
@@ -166,40 +188,105 @@ public class Console {
             case 3:
                 System.out.println("Exam name, firstname, lastname");
 
-                String exam1 = scanner.next();
+                String tempAdd = scanner.next();
                 Student student = new Student(scanner.next(),scanner.next());
-                examService.addStudentToExam(exam1, student);
+                examService.addStudentToExam(tempAdd, student);
 
                 examMenu(scanner);
 
                 break;
             case 4:
-                System.out.println("Exam name");
+                System.out.println("Exam name, firstname, lastname");
 
-                Exam exam2= new Exam(scanner.next());
-                examService.printAllMember(exam2);
+                String exam1 = scanner.next();
+                student = new Student(scanner.next(), scanner.next());
+                examService.removeStudentToExam(exam1, student);
+
+                examMenu(scanner);
+
+                break;
+
+            case 5:
+
+                System.out.println("Remove exam");
+                String examName = scanner.next();
+                examService.removeExam(examName);
+                examMenu(scanner);
+
+                break;
+
+            case 6:
+
+                System.out.println("Exam Order:");
+                examService.examOrder();
+                examMenu(scanner);
 
                 break;
         }
     }
     private void courseMenu(Scanner scanner) {
         System.out.println("Course Menu");
-        System.out.println("1. Create \r\n 2.List \r\n 0. return");
+        System.out.println("1. Create \r\n 2.List \n" +
+                " 3.Add Student\r\n 4. Remove Student\n" +
+                " 0. return");
         Integer choice = scanner.nextInt();
 
         switch (choice) {
 
             case 1:
-                System.out.println("Lav ny course");
-                CourseService.getCourseService();
-                //
-                //courseService.addCourse();
+
+                System.out.println("Name of Course:");
+                String name = scanner.next();
+
+                Course course = new Course(name);
+                courseService.addCourse(course);
+                courseMenu(scanner);
 
                 break;
 
             case 2:
-                //List student
-                System.out.println();
+                System.out.println(Arrays.toString(courseService.getCourseList().toArray()));
+                courseMenu(scanner);
+                break;
+
+            case 3:
+                System.out.println("Course name, firstname, lastname");
+
+                String tempAdd = scanner.next();
+                Student student = new Student(scanner.next(),scanner.next());
+                courseService.addStudentToCourse(tempAdd, student);
+                courseMenu(scanner);
+
+                break;
+
+            case 4:
+                System.out.println("Course name, firstname, lastname");
+
+                String course1 = scanner.next();
+                student = new Student(scanner.next(), scanner.next());
+                courseService.removeStudentFromCourse(course1, student);
+
+                courseMenu(scanner);
+
+                break;
+            case 5:
+                System.out.println("Course name, firstname, lastname");
+
+                String tempAddT = scanner.next();
+                Teacher teacher = new Teacher(scanner.next(),scanner.next());
+                courseService.addTeacherToCourse(tempAddT, teacher);
+                courseMenu(scanner);
+
+                break;
+
+            case 6:
+                System.out.println("Course name, firstname, lastname");
+
+                String course2 = scanner.next();
+                teacher = new Teacher(scanner.next(), scanner.next());
+                courseService.removeTeacherFromCourse(course2, teacher);
+
+                courseMenu(scanner);
 
                 break;
         }

@@ -20,7 +20,6 @@ public class ExamService {
     }
 
 
-
     public static ExamService getExamService() {
         return mySelf;
     }
@@ -35,61 +34,77 @@ public class ExamService {
         return exams.remove(e);
     }
 
-    public void addStudentToExam(String examName, Student student){
-        for (int i = 0; i < exams.size() ; i++) {
+    public void addStudentToExam(String examName, Student student) {
+        for (int i = 0; i < exams.size(); i++) {
             Exam temp = exams.get(i);
-            if (examName.equals(temp.getExamName())){
+            if (examName.equals(temp.getExamName())) {
                 temp.addStudent(student);
             }
 
         }
 
     }
-    public boolean removeStudentToExam(String examName, Student student){
-        for (int i = 0; i < exams.size() ; i++) {
+
+
+    public void removeStudentToExam(String examName, Student student) {
+        for (int i = 0; i < exams.size(); i++) {
             Exam temp = exams.get(i);
-            if (examName.equals(temp.getExamName())){
+            if (examName.equals(temp.getExamName())) {
                 temp.removeStudent(student);
             }
 
         }
-        return true;
     }
-
-    public void examOrder(Exam exam){
-        Collections.reverse(exams);
-        System.out.println(exams);
-    }
-
-
-    /**
-     *
-     * @return the student list. Only for viewing
-     */
-    public List<Exam> getExamList() {
-        return new ArrayList<>(exams);
-    }
-
-    public void printAllMember(Exam examName) {
-        for (int i = 0; i < exams.size(); i++) {
-            Exam temp = exams.get(i);
-            if (examName.equals(temp.getExamName())) {
-                System.out.println(temp.toString());
-            }
-
+    public Exam getExam(String name)
+    {
+        for(Exam e : exams)
+        {
+            if(name.equals(e.getExamName())) return e;
 
         }
-    }
-    /**
-     *
-     * Return a specific student based on the indentifier( to be determined)
-     * @param identifier (rename)
-     * @return
-     */
-    public Exam getBySomeIndentifier(Object identifier) {
-        //TODO implement
+
         return null;
     }
 
+    public void removeExam(String name)
+    {
+        Exam e = getExam(name);
+        exams.remove(e);
+    }
 
-}
+        public void examOrder(){
+            Collections.reverse(exams);
+            System.out.println(exams);
+        }
+
+
+        /**
+         *
+         * @return the student list. Only for viewing
+         */
+        public List<Exam> getExamList () {
+            return new ArrayList<>(exams);
+        }
+
+        public void printAllMember (Exam examName){
+            for (int i = 0; i < exams.size(); i++) {
+                Exam temp = exams.get(i);
+                if (examName.equals(temp.getExamName())) {
+                    System.out.println(temp.toString());
+                }
+
+            }
+        }
+        /**
+         *
+         * Return a specific student based on the indentifier( to be determined)
+         * @param identifier (rename)
+         * @return
+         */
+        public Exam getBySomeIndentifier (Object identifier){
+            //TODO implement
+            return null;
+        }
+
+
+    }
