@@ -63,5 +63,13 @@ public class Course {
         return assignmentList;
     }
 
-
+    @Override
+    public String toString() {
+        return "Course{" +
+                "courseName='" + courseName + '\'' +
+                ", studentList=" + studentList +
+                ", teacherList=" + teacherList +
+                ", assignmentList=" + assignmentList +
+                '}';
+    }
 }

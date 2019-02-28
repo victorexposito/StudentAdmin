@@ -6,53 +6,46 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-/*
-    Student service - singleton pattern
-    Holds the student data and provides operation on student.
- */
+
 public class StudentService {
 
-    /*
-    The instance. There can be only one.
-     */
+
     private static StudentService mySelf = new StudentService();
 
-    /*
-    The list of student
-     */
+
     private List<Student> students = new ArrayList<>();
 
-    /*
-    private constructor to avoid creation from outside the class
-     */
+
 
     private StudentService() {
     }
 
-    /*
-    Return the one and only instance
-     */
+
     public static StudentService getStudentService() {
         return mySelf;
     }
 
-    /**
-     * add a student
-     * @param student
-     * @return
-     */
+
     public boolean addStudent(Student student) {
         return students.add(student);
     }
 
-    /**
-     * remove s from student list - list methods for finding an object relies on equals method !!!
-     * @param s
-     * @return
-     */
-    public boolean removeStudent(Student s) {
 
-        return students.remove(s);
+    public Student getStudent(String name)
+    {
+        for(Student s : students)
+        {
+            if(name.equals(s.getFirstName())) return s;
+
+        }
+
+        return null;
+    }
+
+    public void removeStudent(String name)
+    {
+        Student s = getStudent(name);
+        students.remove(s);
     }
 
     /**
