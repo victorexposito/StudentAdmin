@@ -1,6 +1,6 @@
-package dk.kea.studentAdmin.service;
+package kea.studentAdmin.service;
 
-import dk.kea.studentAdmin.model.Student;
+import kea.studentAdmin.model.Student;
 
 import java.util.ArrayList;
 import java.util.Arrays;

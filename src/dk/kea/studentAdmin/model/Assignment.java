@@ -1,4 +1,4 @@
-package dk.kea.studentAdmin.model;
+package kea.studentAdmin.model;
 
 import java.text.SimpleDateFormat;
 

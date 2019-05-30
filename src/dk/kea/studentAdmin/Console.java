@@ -1,10 +1,10 @@
-package dk.kea.studentAdmin;
+package kea.studentAdmin;
 
-import dk.kea.studentAdmin.model.Course;
-import dk.kea.studentAdmin.model.Exam;
-import dk.kea.studentAdmin.model.Student;
-import dk.kea.studentAdmin.model.Teacher;
-import dk.kea.studentAdmin.service.*;
+import kea.studentAdmin.model.Course;
+import kea.studentAdmin.model.Exam;
+import kea.studentAdmin.model.Student;
+import kea.studentAdmin.model.Teacher;
+import kea.studentAdmin.service.*;
 
 import java.util.Arrays;
 import java.util.InputMismatchException;
